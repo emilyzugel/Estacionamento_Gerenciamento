@@ -1,0 +1,27 @@
+body {
+    background-color: #0f1115; color: #d1d5db; font-family: 'Inter', sans-serif;
+    background-image: radial-gradient(at 10% 10%, rgba(234,179,8,0.05) 0, transparent 50%),
+                      radial-gradient(at 90% 90%, rgba(59,130,246,0.05) 0, transparent 50%);
+    background-attachment: fixed; min-height: 100vh; padding: 2rem;
+}
+.glass {
+    background: rgba(30, 33, 40, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+.glass-input {
+    background: rgba(15, 17, 21, 0.6); border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; width: 100%; outline: none;
+}
+.glass-input:focus { border-color: rgba(234, 179, 8, 0.5); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+.accent { color: #eab308; }
+.btn-primary { background: #eab308; color: #0f1115; font-weight: 600; padding: 0.6rem; border-radius: 0.5rem; width: 100%; font-size: 0.875rem; transition: 0.2s; }
+.btn-primary:hover { background: #ca8a04; }
+.btn-secondary { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; font-weight: 500; padding: 0.6rem; border-radius: 0.5rem; width: 100%; font-size: 0.875rem; transition: 0.2s; }
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th { font-size: 0.75rem; text-transform: uppercase; color: #9ca3af; font-weight: 400; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+td { padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.hidden { display: none; }

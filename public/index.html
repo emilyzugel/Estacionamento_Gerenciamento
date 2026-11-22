@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Estacionamento - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- LOGIN -->
+    <div id="telaLogin" class="flex items-center justify-center min-h-[80vh]">
+        <div class="glass p-10 rounded-2xl w-full max-w-sm">
+            <h2 class="text-2xl font-light mb-8 text-center text-white">Acesso Restrito</h2>
+            <input type="text" id="loginUser" placeholder="Usuário" class="glass-input mb-4">
+            <input type="password" id="loginPass" placeholder="Senha" class="glass-input mb-6">
+            <button onclick="fazerLogin()" class="btn-primary">Entrar</button>
+            <p id="msgLogin" class="text-red-400 text-xs mt-4 text-center h-4"></p>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="sistema" class="hidden max-w-7xl mx-auto">
+        <header class="flex justify-between items-end mb-10 pb-4 border-b border-white/10">
+            <div>
+                <img style="height: 100px" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.freepik.com%2Fvector-premium%2Ficono-estacionamiento-dibujo-lineal-sobre-fondo-amarillo-silueta-automovil-simbolo-parada-senal-carretera_153097-6394.jpg%3Fsemt%3Dais_hybrid%26w%3D740%26q%3D80&f=1&nofb=1&ipt=ee00263a003b75013bb7fcfbe463c43ca151229afa856036b867aca780426a57&ipo=images" alt="Logo">
+                <h1 class="text-3xl font-light tracking-widest text-white uppercase mt-2">Estacionamento</h1>
+                <p class="text-xs accent mt-1 tracking-wider">SISTEMA DE GESTÃO</p>
+            </div>
+            <div class="text-xs text-gray-400 pb-2">
+                Operador: <span id="nomeOperador" class="font-semibold text-white ml-1"></span>
+                <a href="#" onclick="fazerLogout()" class="text-red-400 hover:text-red-300 ml-4 transition">Sair</a>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-sm font-semibold tracking-wider text-gray-200 mb-1 uppercase">Entrada</h2>
+                <p class="text-xs text-gray-400 mb-6">Vagas Livres: <span id="vagasLivres" class="text-2xl font-light accent ml-1">0</span></p>
+                <input type="text" id="inputPlaca" placeholder="Placa do Veículo" class="glass-input mb-3">
+                <select id="inputTipo" class="glass-input mb-4 appearance-none">
+                    <option value="Carro" class="bg-gray-800">Carro</option>
+                    <option value="Moto" class="bg-gray-800">Moto</option>
+                </select>
+                <button onclick="operarEntrada()" class="btn-secondary">Registrar Entrada</button>
+                <p id="msgEntrada" class="text-xs mt-3 h-4"></p>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-sm font-semibold tracking-wider text-gray-200 mb-1 uppercase">Saída e Pagamento</h2>
+                <p class="text-xs text-gray-400 mb-6">Encerrar ticket</p>
+                <input type="text" id="inputPlacaSaida" placeholder="Placa do Veículo" class="glass-input mb-3">
+                <select id="inputPagamento" class="glass-input mb-4 appearance-none">
+                    <option value="Dinheiro" class="bg-gray-800">Dinheiro</option>
+                    <option value="Cartão" class="bg-gray-800">Cartão</option>
+                    <option value="Pix" class="bg-gray-800">Pix</option>
+                </select>
+                <button onclick="operarSaida()" class="btn-primary">Registrar Saída</button>
+                <div id="msgSaida" class="text-xs mt-3"></div>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-sm font-semibold tracking-wider text-gray-200 mb-1 uppercase">Tabela de Preços</h2>
+                <p class="text-xs text-gray-400 mb-6">Ajuste de tarifas</p>
+                <label class="block text-xs text-gray-400 mb-1">Valor Hora Carro (R$)</label>
+                <input type="number" id="precoCarro" value="10.0" step="0.5" class="glass-input mb-3">
+                <label class="block text-xs text-gray-400 mb-1">Tolerância (min)</label>
+                <input type="number" id="precoTolerancia" value="15" class="glass-input mb-4">
+                <button onclick="atualizarPrecos()" class="btn-secondary">Atualizar</button>
+                <p id="msgPreco" class="text-xs mt-3 h-4"></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-sm font-semibold tracking-wider text-gray-200 uppercase">Veículos Presentes</h2>
+                    <button onclick="atualizarEstado()" class="text-xs text-gray-400 hover:text-white transition">Atualizar</button>
+                </div>
+                <div id="tabelaPresentes" class="overflow-x-auto text-sm"></div>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-sm font-semibold tracking-wider text-gray-200 mb-6 uppercase">Histórico</h2>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                    <input type="text" id="buscaHistoricoPlaca" placeholder="Placa" class="glass-input !p-2 text-xs">
+                    <input type="date" id="buscaDataInicio" class="glass-input !p-2 text-xs">
+                    <input type="date" id="buscaDataFim" class="glass-input !p-2 text-xs">
+                    <button onclick="atualizarHistorico()" class="btn-secondary !w-auto !px-4 !py-2 text-xs">Buscar</button>
+                </div>
+                <div id="tabelaHistorico" class="overflow-x-auto text-sm max-h-60 overflow-y-auto"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-sm font-semibold tracking-wider text-gray-200 mb-4 uppercase">Log de Auditoria</h2>
+                <div id="logAuditoria" class="h-40 overflow-y-auto bg-black/40 p-4 rounded-xl font-mono text-xs text-green-400/80 border border-white/5"></div>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-sm font-semibold tracking-wider text-gray-200 uppercase">Testes de Unidade</h2>
+                    <button onclick="rodarTestes()" class="btn-secondary !w-auto !px-4 !py-1.5 text-xs">Executar</button>
+                </div>
+                <ul id="resultadosTestes" class="text-xs space-y-2"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
