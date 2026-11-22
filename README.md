@@ -18,6 +18,7 @@ No entanto, como forma de ir além do solicitado e consolidar os conhecimentos n
 
 <img src="./public/images/dashboard.png" alt="Dashboard Page" width="500">
 <img src="./public/images/login.png" alt="Login Page" width="500">
+
 ## 🚀 Como rodar este projeto localmente
 
 Se quiser testar o código na sua máquina:
