@@ -16,6 +16,8 @@ Este projeto nasceu como requisito avaliativo para a disciplina de **Projeto de 
 
 No entanto, como forma de ir além do solicitado e consolidar os conhecimentos na prática, **tomei a iniciativa de implementar o sistema real e colocá-lo no ar**. O objetivo passou a ser não apenas documentar, mas provar que a arquitetura pensada em sala de aula funciona em um ambiente de produção real. Para isso, o sistema foi construído com uma arquitetura Full-Stack (frontend integrado a um backend em Node.js/Express) e persistência de dados em um banco NoSQL na nuvem (MongoDB), garantindo que o cálculo de tarifas, o controle de vagas e os logs de auditoria sejam reais e persistentes. O deploy foi realizado na Vercel.
 
+<img src="./public/images/dashboard.png" alt="Dashboard Page" width="500">
+<img src="./public/images/login.png" alt="Login Page" width="500">
 ## 🚀 Como rodar este projeto localmente
 
 Se quiser testar o código na sua máquina:
