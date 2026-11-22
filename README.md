@@ -1,4 +1,4 @@
-# 🚗 Sistema de Gestão de Estacionamento
+# Sistema de Gestão de Estacionamento
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -10,7 +10,7 @@
 
 > Acesse o projeto rodando ao vivo: **[https://estacionamento-alpha.vercel.app/](https://estacionamento-alpha.vercel.app/)**
 
-## 📝 Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto nasceu como requisito avaliativo para a disciplina de **Projeto de Engenharia de Software II** da Universidade Regional Integrada do Alto Uruguai e das Missões (URI). O escopo original da disciplina consistia no planejamento e na modelagem do software: definição de requisitos, elaboração do diagrama de classes UML e a criação do plano de testes.
 
@@ -19,7 +19,7 @@ No entanto, como forma de ir além do solicitado e consolidar os conhecimentos n
 <img src="./public/images/dashboard.png" alt="Dashboard Page" width="500">
 <img src="./public/images/login.png" alt="Login Page" width="500">
 
-## 🚀 Como rodar este projeto localmente
+## Como rodar este projeto localmente
 
 Se quiser testar o código na sua máquina:
 
