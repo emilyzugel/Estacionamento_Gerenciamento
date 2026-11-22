@@ -6,7 +6,6 @@ import { TabelaDePrecos, Vaga, Veiculo, Ticket, Operador, Pagamento } from '../s
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
 
 const client = new MongoClient(process.env.MONGODB_URI || 'mongodb://localhost:27017');
 let db;
@@ -125,10 +124,5 @@ app.put('/api/precos', async (req, res) => {
         res.status(500).json({ erro: e.message }); 
     }
 });
-
-if (process.env.NODE_ENV !== 'production') {
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
-}
 
 export default app;
